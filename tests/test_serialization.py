@@ -150,6 +150,52 @@ class NotSoSimpleClass2(AutoSerialize):
         self._values = values
 
 
+class MyClass(AutoSerialize):
+    """
+    A class used in the demo.
+    """
+
+    def __init__(self, a: int, b: tuple[dict[str, list[float]], str]):
+        self._a = a
+        self.b = b
+
+
+class OtherDemoClass(AutoSerialize):
+    """
+    A second class that we use in the demo.
+    """
+
+    def __init__(self, value: int) -> None:
+        self._value = value
+
+
+class DemoClass(AutoSerialize):
+    """
+    This class demos the use of the AutoSerialize class.
+    """
+
+    def __init__(
+        self,
+        a: int,
+        b: list[float] | float,
+        c: dict[str, OtherDemoClass | list[int]],
+        arr: np.ndarray,
+        maybe: str | None = None,
+    ) -> None:
+        self._a = a
+        self._b = b
+        self.c = c
+        self.arr = arr
+        self._maybe = maybe
+
+    def before_serialize(self) -> None:
+        self._a += 1
+
+    def after_deserialize(self) -> None:
+        if self._maybe is None:
+            self._maybe = "world!"
+
+
 class ChildClass1(SimpleClass1):
     """
     This class is a child of SimpleClass1.
@@ -933,3 +979,36 @@ def test_explicit_tuple():
     data = test.to_yaml()
     test2 = TupleNoEllipsisTypeHint.from_yaml(data)
     assert test2.value == (1, "hello", "world", simple_1)
+
+
+def test_first_demo_class():
+    """
+    Make sure that the simple demo works.
+    """
+    test = MyClass(2, ({"hello": [4, 2]}, "world"))
+
+    json_str = test.to_json()
+
+    test_again = MyClass.from_json(json_str)
+
+    assert test_again == test  # True.
+
+
+def test_demo_class():
+    """
+    Make sure that the demo in the readme works.
+    """
+    other_demo_class = OtherDemoClass(5)
+    demo = DemoClass(
+        1, 3.141, {"hello, ": other_demo_class}, np.array([4, 5, 6])
+    )
+
+    json_str = demo.to_json()
+    demo_again = DemoClass.from_json(json_str)
+
+    assert demo_again._a == 2
+    assert demo_again._b == 3.141
+    assert demo_again.c == {"hello, ": other_demo_class}
+    assert np.array_equal(demo_again.arr, np.array([4, 5, 6]))
+    assert isinstance(demo_again.arr, np.ndarray)
+    assert demo_again._maybe == "world!"
