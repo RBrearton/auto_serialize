@@ -1,6 +1,7 @@
 # auto_serialize
 
 This is a simple two-file serialization/deserialization library.
+
 This is not a data validation library. For data validation, use pydantic.
 If you have a polygot codebase, use pydantic.
 You won't care about the schema, but your colleagues will.
@@ -119,7 +120,7 @@ option, which would work! :tada:
 
 If you have an example class that won't serialize, submit an issue. I'll fix it
 and add your class to the test suite! Of course, feel free to submit a PR if
-you're up to fixing it yourself :muscle:
+you're up to fixing it yourself. :muscle:
 
 ## Roadmap
 
