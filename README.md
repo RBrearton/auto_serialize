@@ -2,7 +2,7 @@
 
 This is a simple two-file serialization/deserialization library.
 This is not a data validation library. For data validation, use pydantic.
-python
+
 ### Installation
 
 Install with `pip install auto_serialize`
