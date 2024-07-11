@@ -29,6 +29,9 @@ test_again = MyClass.from_json(json_str)
 
 json_str == '{"a":2,"b":[{"hello":[4,2]},"world"]}' # True
 test_again == test # True.
+
+# We can also serialize to yaml. More formats coming soon :)
+test.to_yaml() == 'a: 2\nb: !!python/tuple\n- hello:\n  - 4\n  - 2\n- world\n' # True
 ```
 
 `AutoSerialize` doesn't just support inbuilt types. It also supports unions,
