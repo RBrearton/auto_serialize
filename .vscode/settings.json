@@ -1,0 +1,15 @@
+{
+  "cSpell.words": [
+    "automagically",
+    "behaviours",
+    "Brearton",
+    "misconstruct",
+    "ndarray",
+    "numpy",
+    "orjson",
+    "pydantic"
+  ],
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
+}
