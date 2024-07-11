@@ -27,6 +27,7 @@ test = MyClass(2, ({"hello": [4, 2]}, "world"))
 json_str = test.to_json()
 test_again = MyClass.from_json(json_str)
 
+json_str == '{"a":2,"b":[{"hello":[4,2]},"world"]}' # True
 test_again == test # True.
 ```
 
