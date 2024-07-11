@@ -7,7 +7,10 @@
     "ndarray",
     "numpy",
     "orjson",
-    "pydantic"
+    "polygot",
+    "protobuf",
+    "pydantic",
+    "tada"
   ],
   "python.testing.pytestArgs": ["tests"],
   "python.testing.unittestEnabled": false,
