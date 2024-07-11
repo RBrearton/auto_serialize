@@ -1,5 +1,5 @@
 """
-This script contains the definition of the ISerializable interface, which must
+This script contains the definition of the Serializable interface, which must
 be implemented by anything serializable.
 """
 
