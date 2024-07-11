@@ -3,6 +3,7 @@
     "automagically",
     "behaviours",
     "Brearton",
+    "deepcopy",
     "misconstruct",
     "ndarray",
     "numpy",

@@ -84,6 +84,14 @@ assert isinstance(demo_again.arr, np.ndarray)
 assert demo_again._maybe == "world!"
 ```
 
+Some other handy things you get from using AutoSerialize:
+
+- A `deepcopy()` method
+  - Currently implemented by serializing to json, then deserializing back.
+- `__eq__`, `__neq__` and `__hash__` default implementations.
+  - Currently implemented by mapping your AutoSerialize objects to python
+    dictionaries.
+
 ## Why?
 
 This is a self serving repository.
