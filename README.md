@@ -3,7 +3,7 @@
 This is a simple two-file serialization/deserialization library.
 
 This is not a data validation library. For data validation, use pydantic.
-If you have a polygot codebase, use pydantic.
+If you have a polyglot codebase, use pydantic.
 You won't care about the schema, but your colleagues will.
 
 ## Installation
